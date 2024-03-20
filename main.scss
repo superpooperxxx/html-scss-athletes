@@ -1,1 +1,142 @@
+* {
+  box-sizing: border-box;
+}
 
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.people {
+  --columns: 2;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(var(--columns), 220px);
+  gap: 30px 5px;
+
+  padding: 30px 35px;
+
+  @media (width >= 1000px) {
+    --columns: 4;
+  }
+}
+
+.person {
+  position: relative;
+
+  width: 100%;
+
+  padding: 10px;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  transition: transform 1s;
+}
+
+.photo {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  margin: 0 auto 8px;
+
+  border-radius: 100px;
+  overflow: hidden;
+
+  transition: border-radius 1s;
+
+  img {
+    width: inherit;
+  }
+}
+
+.rank {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  font-size: 16px;
+  line-height: 18px;
+  color: #8b0000;
+
+  background-color: #fff;
+  border-radius: 32px;
+
+  transform: translateY(-50%);
+}
+
+.details {
+  text-align: center;
+}
+
+.name {
+  display: block;
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23px;
+  color: #2f4f4f;
+}
+
+.extra {
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  display: none;
+
+  margin-top: 9px;
+  padding: 0 10px 16px;
+
+  font-size: 18px;
+  line-height: 20px;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.sport {
+  &::after {
+    content: ",";
+  }
+}
+
+.pay {
+  &::before {
+    content: "$";
+  }
+
+  &::after {
+    content: "M";
+  }
+}
+
+.person:hover {
+  z-index: 1;
+
+  background-color: #eeeeee;
+  transform: scale(1.2);
+
+  .photo {
+    border-radius: 60px;
+  }
+
+  .extra {
+    display: block;
+
+    background-color: #eeeeee;
+  }
+}
